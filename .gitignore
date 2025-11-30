@@ -68,6 +68,7 @@ test-*.js
 # Exclude all files except Vue project essentials
 /*
 !.gitignore
+!README.md
 !index.html
 !login.html
 !signup.html
