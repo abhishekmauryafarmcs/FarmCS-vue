@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "serve .",
     "preview": "serve .",
+    "build": "echo 'Build complete - static files ready'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
