@@ -83,6 +83,8 @@ test-*.js
 !css/
 !js/
 !supabase.config.js
+!firebase.json
+!.firebaserc
 
 # Keep specific data files
 !India-map-cropdata/
