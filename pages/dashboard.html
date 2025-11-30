@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmCS Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        /* Dark Mode Variables */
+        :root {
+            /* Light Mode Colors */
+            --bg-light: #f4f6f9;
+            --text-light: #333;
+            --card-bg-light: #ffffff;
+            --card-shadow-light: rgba(0, 0, 0, 0.1);
+            --sidebar-bg-light: #2c3e50;
+            --sidebar-text-light: rgba(255,255,255,0.7);
+            --primary-light: #2ecc71;
+            
+            /* Dark Mode Colors */
+            --bg-dark: #1a1a2e;
+            --text-dark: #e6e6e6;
+            --card-bg-dark: #16213e;
+            --card-shadow-dark: rgba(255, 255, 255, 0.1);
+            --sidebar-bg-dark: #0f3460;
+            --sidebar-text-dark: rgba(255,255,255,0.8);
+            --primary-dark: #4CAF50;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .dashboard-header {
+            background-color: var(--sidebar-bg-dark);
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Header Icons in Dark Mode */
+        body.dark-mode .header-brand i,
+        body.dark-mode .header-user .menu-item i,
+        body.dark-mode .home-link i {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode .menu-toggle i {
+            color: #ffffff;
+        }
+
+        body.dark-mode .dashboard-sidebar {
+            background-color: var(--sidebar-bg-dark);
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode .dashboard-sidebar .sidebar-menu a {
+            color: var(--sidebar-text-dark);
+            transition: background-color 0.3s ease;
+        }
+
+        body.dark-mode .dashboard-sidebar .sidebar-menu a:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        body.dark-mode .dashboard-sidebar .sidebar-menu a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .stat-card {
+            background-color: var(--card-bg-dark);
+            color: var(--text-dark);
+            box-shadow: 0 4px 6px var(--card-shadow-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        body.dark-mode .stat-card i,
+        body.dark-mode .chart-container i {
+            color: var(--primary-dark);
+        }
+
+        body.dark-mode .stat-card h3 {
+            color: var(--primary-dark);
+        }
+
+        body.dark-mode .chart-container {
+            background-color: var(--card-bg-dark);
+            color: var(--text-dark);
+            box-shadow: 0 4px 6px var(--card-shadow-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        body.dark-mode .chart-container h2 {
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        body.dark-mode .section-title {
+            color: var(--text-dark);
+        }
+
+        body.dark-mode .user-avatar {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        body.dark-mode .header-user {
+            color: var(--text-dark);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-light);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background-color: var(--primary-dark);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .dark-mode-toggle i {
+            font-size: 24px;
+        }
+
+        /* Responsive Dark Mode Toggle */
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .dark-mode-toggle i {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-brand">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <i class="fas fa-leaf"></i> FarmCS
+            <a href="../index.html" class="home-link" title="Go to Home Page">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+        <div class="header-user">
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">
+                    U
+                </div>
+                <span id="headerUserName">User Name</span>
+            </div>
+            <a href="#" class="menu-item" onclick="logout()" title="Logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="dashboard.html" class="menu-item active">
+                    <i class="fas fa-home menu-icon"></i>
+                    Overview
+                </a>
+            </li>
+            <li>
+                <a href="weather.html" class="menu-item">
+                    <i class="fas fa-cloud-sun menu-icon"></i>
+                    Weather
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html" class="menu-item">
+                    <i class="fas fa-chart-line menu-icon"></i>
+                    Analytics
+                </a>
+            </li>
+            <li>
+                <a href="alerts.html" class="menu-item">
+                    <i class="fas fa-bell menu-icon"></i>
+                    Alerts
+                </a>
+            </li>
+            <li>
+                <a href="invoice.html" class="menu-item">
+                    <i class="fas fa-file-invoice menu-icon"></i>
+                    Invoice
+                </a>
+            </li>
+            <li>
+                <a href="system_control.html" class="menu-item">
+                    <i class="fas fa-sliders-h menu-icon"></i>
+                    System Control
+                </a>
+            </li>
+            <li>
+                <a href="settings.html" class="menu-item">
+                    <i class="fas fa-cog menu-icon"></i>
+                    Settings
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <section id="overview" class="fade-in">
+            <h1 class="section-title">Dashboard Overview</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Location</h3>
+                    <p id="userLocation">Loading...</p>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Growing Season</h3>
+                    <p>Rabi 2024-25</p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>Crop Performance</h2>
+                <canvas id="cropPerformanceChart"></canvas>
+            </div>
+
+            <div class="stats-grid">
+                <div class="chart-container">
+                    <h2>Weather Forecast</h2>
+                    <div id="weatherWidget">
+                        <p>Weather data loading...</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h2>Recent Activities</h2>
+                    <div id="activities">
+                        <p>Loading recent activities...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Load user data and initialize dashboard
+        function loadUserData() {
+            const userData = JSON.parse(localStorage.getItem('user'));
+            
+            if (!userData || !userData.isLoggedIn) {
+                window.location.href = '../login.html';
+                return;
+            }
+
+            // Update header user info
+            document.getElementById('headerUserName').textContent = `${userData.firstName} ${userData.lastName}`;
+            document.getElementById('userAvatar').textContent = (userData.firstName).charAt(0).toUpperCase();
+            
+            // Update location
+            document.getElementById('userLocation').textContent = `${userData.district}, ${userData.state}`;
+        }
+
+        function logout() {
+            localStorage.removeItem('user');
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = '../login.html';
+        }
+
+        function showComingSoon(feature) {
+            alert(`${feature} feature coming soon!`);
+        }
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        // Check for saved dark mode preference
+        const savedDarkMode = localStorage.getItem('darkMode');
+        if (savedDarkMode === 'enabled') {
+            body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            
+            if (isDarkMode) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Hamburger Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.dashboard-sidebar');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        mobileOverlay.addEventListener('click', toggleMenu);
+
+        // Initialize Crop Performance Chart
+        const ctx = document.getElementById('cropPerformanceChart').getContext('2d');
+        const cropPerformanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Crop Yield (tons)',
+                    data: [12, 19, 15, 25, 22, 30],
+                    borderColor: '#2ecc71',
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Crop Performance'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Load sample weather data
+        function loadWeatherData() {
+            const weatherWidget = document.getElementById('weatherWidget');
+            weatherWidget.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <i class="fas fa-sun" style="font-size: 48px; color: #f39c12; margin-bottom: 10px;"></i>
+                    <h4>Sunny</h4>
+                    <p>Temperature: 28°C</p>
+                    <p>Humidity: 65%</p>
+                    <p>Wind: 12 km/h</p>
+                </div>
+            `;
+        }
+
+        // Load sample activities
+        function loadActivities() {
+            const activities = document.getElementById('activities');
+            activities.innerHTML = `
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px; border-bottom: 1px solid #eee;">
+                        <i class="fas fa-tint" style="color: #3498db; margin-right: 10px;"></i>
+                        Irrigation completed - Field A
+                        <small style="display: block; color: #7f8c8d;">2 hours ago</small>
+                    </li>
+                    <li style="padding: 10px; border-bottom: 1px solid #eee;">
+                        <i class="fas fa-seedling" style="color: #27ae60; margin-right: 10px;"></i>
+                        Fertilizer applied - Field B
+                        <small style="display: block; color: #7f8c8d;">5 hours ago</small>
+                    </li>
+                    <li style="padding: 10px;">
+                        <i class="fas fa-chart-line" style="color: #e74c3c; margin-right: 10px;"></i>
+                        Soil moisture checked
+                        <small style="display: block; color: #7f8c8d;">1 day ago</small>
+                    </li>
+                </ul>
+            `;
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserData();
+            loadWeatherData();
+            loadActivities();
+        });
+    </script>
+</body>
+</html>

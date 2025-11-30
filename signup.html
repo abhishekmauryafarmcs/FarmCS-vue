@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - FarmCS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./auth.css">
+</head>
+<body>
+    <iframe src="background.html" class="background-iframe" title="FarmCS preview"></iframe>
+    <div class="overlay"></div>
+
+    <div class="signup-container auth-container">
+        <div class="signup-card auth-card">
+            <button class="close-btn" onclick="window.location.href='index.html'" title="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="signup-header auth-header">
+                <div class="logo">
+                    <img src="./images/FarmCSlogo.png" alt="FarmCS Logo">
+                </div>
+                <h1>Create Account</h1>
+                <p>Join FarmCS Smart Farming Platform</p>
+            </div>
+
+            <div id="errorDisplay" class="error-banner" role="alert"></div>
+
+            <form class="signup-form" id="signupForm" novalidate>
+                <div class="form-row two-col">
+                    <div class="form-group">
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                        <div class="error-message" id="firstNameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                        <div class="error-message" id="lastNameError"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10" required>
+                    <div class="error-message" id="mobileError"></div>
+                </div>
+
+                <div class="form-row two-col">
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+                </div>
+
+                <div class="form-row two-col">
+                    <div class="form-group">
+                        <select id="state" name="state" required>
+                            <option value="">Select State</option>
+                        </select>
+                        <div class="error-message" id="stateError"></div>
+                    </div>
+                    <div class="form-group">
+                        <select id="district" name="district" required disabled>
+                            <option value="">Select District</option>
+                        </select>
+                        <div class="error-message" id="districtError"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn signup-btn">Create Account</button>
+                <div class="alt-link login-link">
+                    Already have an account? <a href="login.html" class="page-transition">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="./supabase.config.js"></script>
+    <script src="./js/ui_effects.js"></script>
+    <script src="./js/districts.js"></script>
+    <script src="./js/signup.js"></script>
+</body>
+</html>

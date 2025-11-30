@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmCS Background</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./home.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .popup-overlay {
+            display: none !important;
+        }
+        .auth-buttons {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-page">
+        <header>
+            <a href="index.html" class="logo">
+                <img src="images/FarmCSlogo.png" alt="FarmCS Logo">
+            </a>
+            <nav>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="pages/cropdata.html">Crop Data</a>
+                    <a href="pages/learn-more.html">Learn More</a>
+                    <a href="pages/about.html">About Us</a>
+                    <a href="pages/contact.html">Contact</a>
+                </div>
+            </nav>
+        </header>
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="animate">India's First Smart Sprinkler System</h1>
+                <p class="animate">Empowering farmers with intelligent irrigation solutions for sustainable agriculture</p>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title animate">Smart Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card animate">
+                        <i class="fas fa-tint"></i>
+                        <h3>Smart Irrigation</h3>
+                        <p>AI-powered water management for optimal crop growth</p>
+                    </div>
+                    <div class="feature-card animate">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h3>Weather Integration</h3>
+                        <p>Real-time weather data for intelligent watering decisions</p>
+                    </div>
+                    <div class="feature-card animate">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Control</h3>
+                        <p>Control your irrigation system from anywhere</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
