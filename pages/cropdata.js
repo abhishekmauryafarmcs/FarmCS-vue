@@ -1,3 +1,4 @@
+const THEME_STORAGE_KEY = 'farmcsTheme';
 const INDIA_DATA_PATH = '../India-map-cropdata/india.json';
 const CROPS_DATA_PATH = '../India-map-cropdata/df2013.csv';
 const STATE_PRODUCTION_PATH = '../India-map-cropdata/state_crop_production.csv';
@@ -269,21 +270,21 @@ async function loadDistrictAnalysis() {
 }
 
 const darkModeToggle = document.getElementById('darkModeToggle');
-const darkModeIcon = darkModeToggle.querySelector('i');
+const darkModeIcon = darkModeToggle?.querySelector('i');
 
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     const enabled = document.body.classList.contains('dark-mode');
-    darkModeIcon.classList.toggle('fa-sun', enabled);
-    darkModeIcon.classList.toggle('fa-moon', !enabled);
-    localStorage.setItem('cropDataDarkMode', enabled ? 'enabled' : 'disabled');
+    darkModeIcon?.classList.toggle('fa-sun', enabled);
+    darkModeIcon?.classList.toggle('fa-moon', !enabled);
+    localStorage.setItem(THEME_STORAGE_KEY, enabled ? 'enabled' : 'disabled');
 }
 
 function checkDarkModePreference() {
-    const enabled = localStorage.getItem('cropDataDarkMode') === 'enabled';
+    const enabled = localStorage.getItem(THEME_STORAGE_KEY) === 'enabled';
     document.body.classList.toggle('dark-mode', enabled);
-    darkModeIcon.classList.toggle('fa-sun', enabled);
-    darkModeIcon.classList.toggle('fa-moon', !enabled);
+    darkModeIcon?.classList.toggle('fa-sun', enabled);
+    darkModeIcon?.classList.toggle('fa-moon', !enabled);
 }
 
 darkModeToggle.addEventListener('click', toggleDarkMode);

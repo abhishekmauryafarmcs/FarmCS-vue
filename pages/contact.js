@@ -1,9 +1,11 @@
+const THEME_STORAGE_KEY = 'farmcsTheme';
+
 const hamburger = document.querySelector('.hamburger-menu');
 const navLinks = document.querySelector('.nav-links');
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
 const darkModeToggle = document.querySelector('.dark-mode-toggle');
-const icon = darkModeToggle.querySelector('i');
+const icon = darkModeToggle?.querySelector('i');
 
 hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('active');
@@ -33,17 +35,17 @@ contactForm?.addEventListener('submit', (event) => {
 
 function applyDarkMode(enabled) {
     document.body.classList.toggle('dark-mode', enabled);
-    icon.classList.toggle('fa-sun', enabled);
-    icon.classList.toggle('fa-moon', !enabled);
+    icon?.classList.toggle('fa-sun', enabled);
+    icon?.classList.toggle('fa-moon', !enabled);
 }
 
-const savedDarkMode = localStorage.getItem('contactDarkMode') === 'enabled';
+const savedDarkMode = localStorage.getItem(THEME_STORAGE_KEY) === 'enabled';
 applyDarkMode(savedDarkMode);
 
-darkModeToggle.addEventListener('click', () => {
+darkModeToggle?.addEventListener('click', () => {
     const enabled = !document.body.classList.contains('dark-mode');
     applyDarkMode(enabled);
-    localStorage.setItem('contactDarkMode', enabled ? 'enabled' : 'disabled');
+    localStorage.setItem(THEME_STORAGE_KEY, enabled ? 'enabled' : 'disabled');
 });
 
 window.AOS?.init({ duration: 1000, once: true });

@@ -7,6 +7,28 @@
     --dark-text: #333333;
 }
 
+/* Dark mode adjustments for mobile navigation */
+body.dark-mode .hamburger-menu .bar {
+    background-color: var(--white);
+}
+
+body.dark-mode .nav-links {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(25, 25, 25, 0.95));
+    border-left-color: var(--accent-orange);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .nav-links a {
+    color: var(--white);
+    border-left-color: transparent;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--accent-orange);
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: var(--accent-orange);
+}
+
 * {
     margin: 0;
     padding: 0;

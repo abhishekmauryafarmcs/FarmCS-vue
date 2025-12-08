@@ -1,3 +1,5 @@
+const THEME_STORAGE_KEY = 'farmcsTheme';
+
 const hamburger = document.querySelector('.hamburger-menu');
 const navLinks = document.querySelector('.nav-links');
 const darkModeToggle = document.querySelector('.dark-mode-toggle');
@@ -30,13 +32,13 @@ function setDarkMode(enabled) {
     }
 }
 
-const savedDarkMode = localStorage.getItem('learnMoreDarkMode') === 'enabled';
+const savedDarkMode = localStorage.getItem(THEME_STORAGE_KEY) === 'enabled';
 setDarkMode(savedDarkMode);
 
 darkModeToggle?.addEventListener('click', () => {
     const enabled = !document.body.classList.contains('dark-mode');
     setDarkMode(enabled);
-    localStorage.setItem('learnMoreDarkMode', enabled ? 'enabled' : 'disabled');
+    localStorage.setItem(THEME_STORAGE_KEY, enabled ? 'enabled' : 'disabled');
 });
 
 window.AOS?.init({ duration: 1000, once: true });

@@ -8,6 +8,28 @@
     --dark-text: #333333;
 }
 
+/* Dark mode adjustments for mobile navigation */
+body.dark-mode .hamburger-menu .bar {
+    background-color: var(--white);
+}
+
+body.dark-mode .nav-links {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(25, 25, 25, 0.95));
+    border-left: 3px solid var(--accent-orange);
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .nav-links a {
+    color: var(--white);
+    border-left-color: transparent;
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--accent-orange);
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: var(--accent-orange);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -1456,4 +1478,472 @@ body.dark-mode .features {
 
 body.dark-mode .feature-icon {
     color: var(--accent-orange);
+}
+
+/* Problem Section Styles */
+.problem-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.problem-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.problem-card h3 {
+    color: var(--primary-green);
+    margin: 1rem 0;
+    font-size: 1.3rem;
+}
+
+.problem-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* USP Section Styles */
+.usp-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.usp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.usp-card {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-green);
+    transition: all 0.3s ease;
+}
+
+.usp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.usp-card h3 {
+    color: var(--primary-green);
+    margin: 1rem 0;
+    font-size: 1.3rem;
+}
+
+.usp-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Technology Section Styles */
+.technology-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f5f5f5 0%, #fff3e0 100%);
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+}
+
+.tech-card h3 {
+    color: var(--tech-blue);
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.tech-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Progress Section Styles */
+.progress-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.progress-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.progress-item {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.progress-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+}
+
+.progress-item h3 {
+    color: var(--primary-green);
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.progress-item p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Recognition Section Styles */
+.recognition-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.award-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.award-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+}
+
+.award-card .feature-icon {
+    color: var(--accent-orange);
+    font-size: 2.5rem;
+}
+
+.award-card h3 {
+    color: var(--accent-orange);
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.award-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Business Model Section Styles */
+.business-model-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.business-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.business-card {
+    background: linear-gradient(135deg, #e1f5fe 0%, #f0f4c3 100%);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border-right: 4px solid var(--tech-blue);
+    transition: all 0.3s ease;
+}
+
+.business-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.business-card .feature-icon {
+    color: var(--tech-blue);
+    font-size: 2.5rem;
+}
+
+.business-card h3 {
+    color: var(--tech-blue);
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.business-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Vision Section Styles */
+.vision-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+
+.vision-content {
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.vision-statement {
+    font-size: 1.3rem;
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+.vision-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.highlight-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+}
+
+.highlight-item .feature-icon {
+    color: var(--primary-green);
+    font-size: 2.5rem;
+}
+
+.highlight-item h3 {
+    color: var(--primary-green);
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.highlight-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* CTA Section Styles */
+.cta-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-section .section-title h2 {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.cta-section .section-title p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 2rem auto;
+}
+
+.cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.cta-buttons .btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-buttons .btn-primary {
+    background: white;
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+.cta-buttons .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-buttons .btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-buttons .btn:hover {
+    background: white;
+    color: var(--primary-green);
+}
+
+.website-link {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.website-link strong {
+    color: white;
+    font-weight: 600;
+}
+
+/* Dark mode adjustments for new sections */
+body.dark-mode .problem-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d3d2d 100%);
+}
+
+body.dark-mode .problem-card {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .problem-card h3 {
+    color: #4CAF50;
+}
+
+body.dark-mode .usp-section {
+    background: #1a1a1a;
+}
+
+body.dark-mode .usp-card {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d1b4e 100%);
+    color: #e0e0e0;
+}
+
+body.dark-mode .usp-card h3 {
+    color: #4CAF50;
+}
+
+body.dark-mode .technology-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d1a 100%);
+}
+
+body.dark-mode .tech-card {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tech-card h3 {
+    color: #64B5F6;
+}
+
+body.dark-mode .progress-section {
+    background: #1a1a1a;
+}
+
+body.dark-mode .progress-item {
+    background: linear-gradient(135deg, #2d3d2d 0%, #1a2a1a 100%);
+    color: #e0e0e0;
+}
+
+body.dark-mode .progress-item h3 {
+    color: #4CAF50;
+}
+
+body.dark-mode .recognition-section {
+    background: linear-gradient(135deg, #2d2d1a 0%, #3d3d2a 100%);
+}
+
+body.dark-mode .award-card {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .award-card h3 {
+    color: #FF6B35;
+}
+
+body.dark-mode .business-model-section {
+    background: #1a1a1a;
+}
+
+body.dark-mode .business-card {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d2d1a 100%);
+    color: #e0e0e0;
+}
+
+body.dark-mode .business-card h3 {
+    color: #64B5F6;
+}
+
+body.dark-mode .vision-section {
+    background: linear-gradient(135deg, #2d3d2d 0%, #1a2a1a 100%);
+}
+
+body.dark-mode .vision-statement {
+    color: #4CAF50;
+}
+
+body.dark-mode .highlight-item {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .highlight-item h3 {
+    color: #4CAF50;
+}
+
+body.dark-mode .cta-section {
+    background: linear-gradient(135deg, #1a4d1a 0%, #2d6d2d 100%);
 }
